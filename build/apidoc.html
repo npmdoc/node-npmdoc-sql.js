@@ -1,0 +1,727 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://github.com/kripken/sql.js"
+
+    >sql.js (v0.4.0)</a>
+</h1>
+<h4>SQLite library with support for opening and writing databases, prepared statements, and more. This SQLite library is in pure javascript (compiled with emscripten).</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js">module sql.js</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database">
+            function <span class="apidocSignatureSpan">sql.js.</span>Database
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.js.Database">
+            function <span class="apidocSignatureSpan">sql.js.</span>js.Database
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.Database.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.sql_debug</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.sql_memory_growth</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.worker_sql</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.Database">module sql.js.Database</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.Database">
+            function <span class="apidocSignatureSpan">sql.js.</span>Database
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.Database.prototype">module sql.js.Database.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.close">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>close
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.create_function">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>create_function
+            <span class="apidocSignatureSpan">(a, c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.each">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>each
+            <span class="apidocSignatureSpan">(a, c, d, e)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.exec">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>exec
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.export">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>export
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.getRowsModified">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>getRowsModified
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.handleError">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>handleError
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.prepare">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>prepare
+            <span class="apidocSignatureSpan">(a, c)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.Database.prototype.run">
+            function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>run
+            <span class="apidocSignatureSpan">(a, c)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.sql_debug">module sql.js.sql_debug</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.sql_debug.Database">
+            function <span class="apidocSignatureSpan">sql.js.sql_debug.</span>Database
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.sql_memory_growth">module sql.js.sql_memory_growth</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.sql_memory_growth.Database">
+            function <span class="apidocSignatureSpan">sql.js.sql_memory_growth.</span>Database
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.worker_sql">module sql.js.worker_sql</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.worker_sql.Database">
+            function <span class="apidocSignatureSpan">sql.js.worker_sql.</span>Database
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js" id="apidoc.module.sql.js">module sql.js</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database" id="apidoc.element.sql.js.Database">
+        function <span class="apidocSignatureSpan">sql.js.</span>Database
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function a(a){this.filename=&#x22;dbfile_&#x22;+(4294967295*Math.random()&#x3e;&#x3e;&#x3e;0);null!=a&#x26;&#x26;Gc(&#x22;/&#x22;,this.filename,a,!0,!0);this.handleError(xe(
+this.filename,Z));this.db=y(Z,&#x22;i32&#x22;);be(this.db);this.ra={}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var sql = require(&#x27;sql.js&#x27;);
+// or sql = window.SQL if you are in a browser
+
+// Create a database
+var db = new sql.<span class="apidocCodeKeywordSpan">Database</span>();
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = &#x22;CREATE TABLE hello (a int, b char);&#x22;;
+sqlstr += &#x22;INSERT INTO hello VALUES (0, &#x27;hello&#x27;);&#x22;
+sqlstr += &#x22;INSERT INTO hello VALUES (1, &#x27;world&#x27;);&#x22;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.js.Database" id="apidoc.element.sql.js.js.Database">
+        function <span class="apidocSignatureSpan">sql.js.</span>js.Database
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function a(a){this.filename=&#x22;dbfile_&#x22;+(4294967295*Math.random()&#x3e;&#x3e;&#x3e;0);null!=a&#x26;&#x26;Gc(&#x22;/&#x22;,this.filename,a,!0,!0);this.handleError(xe(
+this.filename,Z));this.db=y(Z,&#x22;i32&#x22;);be(this.db);this.ra={}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js.Database" id="apidoc.module.sql.js.Database">module sql.js.Database</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.Database" id="apidoc.element.sql.js.Database.Database">
+        function <span class="apidocSignatureSpan">sql.js.</span>Database
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function a(a){this.filename=&#x22;dbfile_&#x22;+(4294967295*Math.random()&#x3e;&#x3e;&#x3e;0);null!=a&#x26;&#x26;Gc(&#x22;/&#x22;,this.filename,a,!0,!0);this.handleError(xe(
+this.filename,Z));this.db=y(Z,&#x22;i32&#x22;);be(this.db);this.ra={}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var sql = require(&#x27;sql.js&#x27;);
+// or sql = window.SQL if you are in a browser
+
+// Create a database
+var db = new sql.<span class="apidocCodeKeywordSpan">Database</span>();
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = &#x22;CREATE TABLE hello (a int, b char);&#x22;;
+sqlstr += &#x22;INSERT INTO hello VALUES (0, &#x27;hello&#x27;);&#x22;
+sqlstr += &#x22;INSERT INTO hello VALUES (1, &#x27;world&#x27;);&#x22;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js.Database.prototype" id="apidoc.module.sql.js.Database.prototype">module sql.js.Database.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.close" id="apidoc.element.sql.js.Database.prototype.close">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>close
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">close = function (){var a,c,d;c=this.ra;for(a in c)d=c[a],d.free();this.handleError(le(this.db));qc(&#x22;/&#x22;+this.filename);return this.db=null
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    console.log(&#x22;FS.trackingDelegate[&#x27;onOpenFile&#x27;](&#x27;&#x22;+path+&#x22;&#x27;, flags) threw an exception: &#x22
+; + e.message);
+  }
+  return stream;
+},close:function (stream) {
+  if (stream.getdents) stream.getdents = null; // free readdir state
+  try {
+    if (stream.stream_ops.close) {
+      stream.stream_ops.<span class="apidocCodeKeywordSpan">close</span>(stream);
+    }
+  } catch (e) {
+    throw e;
+  } finally {
+    FS.closeStream(stream.fd);
+  }
+},llseek:function (stream, offset, whence) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.create_function" id="apidoc.element.sql.js.Database.prototype.create_function">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>create_function
+        <span class="apidocSignatureSpan">(a, c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">create_function = function (a, c){var d;d=l.La(function(a,
+b,d){var m,t,r,x,v;t=[];for(m=r=0;0&#x3c;=b?r&#x3c;=b:r&#x3e;=b;m=0&#x3c;=b?++r:--r)x=y(d+4*m,&#x22;i32&#x22;),v=Ke(x),m=function(){switch(!1){case 1!==v:return
+ Ie;case 2!==v:return He;case 3!==v:return Je;case 4!==v:return function(a){var b,c,d,e;e=Ge(a);b=Fe(a);a=new Uint8Array(e);for(
+c=d=0;0&#x3c;=e?d&#x3c;e:d&#x3e;e;c=0&#x3c;=e?++d:--d)a[c]=u[b+c];return a};default:return function(){return null}}}(),m=m(x),t.push(m);if(b=c.apply
+(null,t))switch(typeof b){case &#x22;number&#x22;:return Be(a,b);case &#x22;string&#x22;:return De(a,b,-1,-1)}else return Ce(a)});this.handleError(se
+(this.db,
+a,c.length,X.jb,0,d,0,0,0));return this}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+stmt.bind([0, &#x27;hello&#x27;]);
+while (stmt.step()) console.log(stmt.get()); // Will print [0, &#x27;hello&#x27;]
+
+// You can also use javascript functions inside your SQL code
+// Create the js function you need
+function add(a, b) {return a+b;}
+// Specifies the SQL function&#x27;s name, the number of it&#x27;s arguments, and the js function to use
+db.<span class="apidocCodeKeywordSpan">create_function</span>(&#x22;add_js&#x22;, add);
+// Run a query in which the function is used
+db.run(&#x22;INSERT INTO hello VALUES (add_js(7, 3), add_js(&#x27;Hello &#x27;, &#x27;world&#x27;));&#x22;); // Inserts 10 and &#
+x27;Hello world&#x27;
+
+// free the memory used by the statement
+stmt.free();
+// You can not use your statement anymore once it has been freed.
+// But not freeing your statements causes memory leaks. You don&#x27;t want that.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.each" id="apidoc.element.sql.js.Database.prototype.each">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>each
+        <span class="apidocSignatureSpan">(a, c, d, e)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">each = function (a, c, d, e){&#x22;function&#x22;===typeof c&#x26;&#x26;(e=d,d=c,c=void 0);for(a=this.prepare(a,c);a.step();)d(a.getAsObject());a.free();if(&#x22;function
+&#x22;===typeof e)return e()}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+to the query
+@param callback [Function(Object)] A function that will be called on each row of result
+@param done [Function] A function that will be called when all rows have been retrieved
+
+@return [Database] The database object. Useful for method chaining
+
+@example Read values from a table
+    db.<span class="apidocCodeKeywordSpan">each</span>(&#x22;SELECT name,age FROM users WHERE age &#x3e;= $majority&#x22;,
+                    {$majority:18},
+                    function(row){console.log(row.name + &#x22; is a grown-up.&#x22;)}
+                );
+ */
+
+Database.prototype[&#x27;each&#x27;] = function(sql, params, callback, done) {
+  var stmt;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.exec" id="apidoc.element.sql.js.Database.prototype.exec">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>exec
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">exec = function (a){var c,d,e,g,h;if(!this.db)throw&#x22;Database closed&#x22;;g=l.qa();d=l.R(a.length&#x3c;&#x3c;3);wa(a,d);a=l.R(4);for(e=
+[];y(d,&#x22;i8&#x22;)!==ae;)if(ya(Z,0,&#x22;i32&#x22;),ya(a,0,&#x22;i32&#x22;),this.handleError(ze(this.db,d,-1,Z,a)),c=y(Z,&#x22;i32&#x22;),d=y(a,&#x22;i32&#x22;),c!==ae){h=new
+ ce(c,this);for(c=null;h.step();)null===c&#x26;&#x26;(c={columns:h.getColumnNames(),values:[]},e.push(c)),c.values.push(h.get());h.free()}
+l.ga(g);return e}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// Execute some sql
+sqlstr = &#x22;CREATE TABLE hello (a int, b char);&#x22;;
+sqlstr += &#x22;INSERT INTO hello VALUES (0, &#x27;hello&#x27;);&#x22;
+sqlstr += &#x22;INSERT INTO hello VALUES (1, &#x27;world&#x27;);&#x22;
+db.run(sqlstr); // Run the query without returning anything
+
+var res = db.<span class="apidocCodeKeywordSpan">exec</span>(&#x22;SELECT * FROM hello&#x22;);
+/*
+[
+	{columns:[&#x27;a&#x27;,&#x27;b&#x27;], values:[[0,&#x27;hello&#x27;],[1,&#x27;world&#x27;]]}
+]
+*/
+
+// Prepare an sql statement
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.export" id="apidoc.element.sql.js.Database.prototype.export">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>export
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">export = function (){var a,c,d,e;d=this.ra;for(a in d)e=d[a],e.free();this.handleError(le(this.db));e=this.filename;a=a={encoding:&#x22;binary
+&#x22;};a.flags=a.flags||&#x22;r&#x22;;a.encoding=a.encoding||&#x22;binary&#x22;;if(&#x22;utf8&#x22;!==a.encoding&#x26;&#x26;&#x22;binary&#x22;!==a.encoding)throw Error(&#x27;Invalid encoding
+ type &#x22;&#x27;+a.encoding+&#x27;&#x22;&#x27;);d=wc(e,a.flags);e=rc(e).size;var g=new Uint8Array(e);
+Ac(d,g,0,e,0);&#x22;utf8&#x22;===a.encoding?c=La(g,0):&#x22;binary&#x22;===a.encoding&#x26;&#x26;(c=g);yc(d);this.handleError(xe(this.filename,Z));this.db=y(Z
+,&#x22;i32&#x22;);return c}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+// free the memory used by the statement
+stmt.free();
+// You can not use your statement anymore once it has been freed.
+// But not freeing your statements causes memory leaks. You don&#x27;t want that.
+
+// Export the database to an Uint8Array containing the SQLite database file
+var binaryArray = db.<span class="apidocCodeKeywordSpan">export</span>();
+```
+
+## Demo
+There is an online demo available here : http://kripken.github.io/sql.js/GUI
+
+## Examples
+The test files provide up to date example of the use of the api.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.getRowsModified" id="apidoc.element.sql.js.Database.prototype.getRowsModified">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>getRowsModified
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRowsModified = function (){return je(this.db)}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.handleError" id="apidoc.element.sql.js.Database.prototype.handleError">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>handleError
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">handleError = function (a){if(a===X.ka)return null;a=ue(this.db);throw Error(a);}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.pos = 1;
+  switch (ret = sqlite3_step(this.stmt)) {
+    case SQLite.ROW:
+      return true;
+    case SQLite.DONE:
+      return false;
+    default:
+      return this.db.<span class="apidocCodeKeywordSpan">handleError</span>(ret);
+  }
+};
+
+Statement.prototype.getNumber = function(pos) {
+  if (pos == null) {
+    pos = this.pos++;
+  }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.prepare" id="apidoc.element.sql.js.Database.prototype.prepare">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>prepare
+        <span class="apidocSignatureSpan">(a, c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">prepare = function (a, c){var d,e;ya(Z,0,&#x22;i32&#x22;);
+this.handleError(ye(this.db,a,-1,Z,ae));d=y(Z,&#x22;i32&#x22;);if(d===ae)throw&#x22;Nothing to prepare&#x22;;e=new ce(d,this);null!=c&#x26;&#x26;e.bind(c);return
+ this.ra[d]=e}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+/*
+[
+	{columns:[&#x27;a&#x27;,&#x27;b&#x27;], values:[[0,&#x27;hello&#x27;],[1,&#x27;world&#x27;]]}
+]
+*/
+
+// Prepare an sql statement
+var stmt = db.<span class="apidocCodeKeywordSpan">prepare</span>(&#x22;SELECT * FROM hello WHERE a=:aval AND b=:bval&#x22;);
+
+// Bind values to the parameters and fetch the results of the query
+var result = stmt.getAsObject({&#x27;:aval&#x27; : 1, &#x27;:bval&#x27; : &#x27;world&#x27;});
+console.log(result); // Will print {a:1, b:&#x27;world&#x27;}
+
+// Bind other values
+stmt.bind([0, &#x27;hello&#x27;]);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.Database.prototype.run" id="apidoc.element.sql.js.Database.prototype.run">
+        function <span class="apidocSignatureSpan">sql.js.Database.prototype.</span>run
+        <span class="apidocSignatureSpan">(a, c)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">run = function (a, c){var d;if(!this.db)throw&#x22;Database closed&#x22;;c?(d=this.prepare(a,c),d.step(),d.free()):this.handleError(ve(this.db,a,
+0,0,Z));return this}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = &#x22;CREATE TABLE hello (a int, b char);&#x22;;
+sqlstr += &#x22;INSERT INTO hello VALUES (0, &#x27;hello&#x27;);&#x22;
+sqlstr += &#x22;INSERT INTO hello VALUES (1, &#x27;world&#x27;);&#x22;
+db.<span class="apidocCodeKeywordSpan">run</span>(sqlstr); // Run the query without returning anything
+
+var res = db.exec(&#x22;SELECT * FROM hello&#x22;);
+/*
+[
+	{columns:[&#x27;a&#x27;,&#x27;b&#x27;], values:[[0,&#x27;hello&#x27;],[1,&#x27;world&#x27;]]}
+]
+*/
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js.sql_debug" id="apidoc.module.sql.js.sql_debug">module sql.js.sql_debug</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.sql_debug.Database" id="apidoc.element.sql.js.sql_debug.Database">
+        function <span class="apidocSignatureSpan">sql.js.sql_debug.</span>Database
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Database(data) {
+  this.filename = &#x27;dbfile_&#x27; + (0xffffffff * Math.random() &#x3e;&#x3e;&#x3e; 0);
+  if (data != null) {
+    FS.createDataFile(&#x27;/&#x27;, this.filename, data, true, true);
+  }
+  this.handleError(sqlite3_open(this.filename, apiTemp));
+  this.db = getValue(apiTemp, &#x27;i32&#x27;);
+  RegisterExtensionFunctions(this.db);
+  this.statements = {};
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var sql = require(&#x27;sql.js&#x27;);
+// or sql = window.SQL if you are in a browser
+
+// Create a database
+var db = new sql.<span class="apidocCodeKeywordSpan">Database</span>();
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = &#x22;CREATE TABLE hello (a int, b char);&#x22;;
+sqlstr += &#x22;INSERT INTO hello VALUES (0, &#x27;hello&#x27;);&#x22;
+sqlstr += &#x22;INSERT INTO hello VALUES (1, &#x27;world&#x27;);&#x22;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js.sql_memory_growth" id="apidoc.module.sql.js.sql_memory_growth">module sql.js.sql_memory_growth</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.sql_memory_growth.Database" id="apidoc.element.sql.js.sql_memory_growth.Database">
+        function <span class="apidocSignatureSpan">sql.js.sql_memory_growth.</span>Database
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function a(a){this.filename=&#x22;dbfile_&#x22;+(4294967295*Math.random()&#x3e;&#x3e;&#x3e;0);null!=a&#x26;&#x26;Kc(&#x22;/&#x22;,this.filename,a,!0,!0);this.handleError(Be(
+this.filename,Z));this.db=Ha(Z,&#x22;i32&#x22;);fe(this.db);this.ra={}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var sql = require(&#x27;sql.js&#x27;);
+// or sql = window.SQL if you are in a browser
+
+// Create a database
+var db = new sql.<span class="apidocCodeKeywordSpan">Database</span>();
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = &#x22;CREATE TABLE hello (a int, b char);&#x22;;
+sqlstr += &#x22;INSERT INTO hello VALUES (0, &#x27;hello&#x27;);&#x22;
+sqlstr += &#x22;INSERT INTO hello VALUES (1, &#x27;world&#x27;);&#x22;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js.worker_sql" id="apidoc.module.sql.js.worker_sql">module sql.js.worker_sql</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.worker_sql.Database" id="apidoc.element.sql.js.worker_sql.Database">
+        function <span class="apidocSignatureSpan">sql.js.worker_sql.</span>Database
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function a(a){this.filename=&#x22;dbfile_&#x22;+(4294967295*Math.random()&#x3e;&#x3e;&#x3e;0);null!=a&#x26;&#x26;Gc(&#x22;/&#x22;,this.filename,a,!0,!0);this.handleError(xe(
+this.filename,Z));this.db=y(Z,&#x22;i32&#x22;);be(this.db);this.ra={}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var sql = require(&#x27;sql.js&#x27;);
+// or sql = window.SQL if you are in a browser
+
+// Create a database
+var db = new sql.<span class="apidocCodeKeywordSpan">Database</span>();
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = &#x22;CREATE TABLE hello (a int, b char);&#x22;;
+sqlstr += &#x22;INSERT INTO hello VALUES (0, &#x27;hello&#x27;);&#x22;
+sqlstr += &#x22;INSERT INTO hello VALUES (1, &#x27;world&#x27;);&#x22;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
