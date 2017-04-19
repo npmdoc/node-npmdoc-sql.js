@@ -80,6 +80,12 @@
 
         <li>
 
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.sql</span>
+
+        </li>
+
+        <li>
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.sql_debug</span>
 
         </li>
@@ -87,6 +93,12 @@
         <li>
 
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.sql_memory_growth</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sql.js.</span>js.sql_optimized</span>
 
         </li>
 
@@ -196,6 +208,19 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.sql">module sql.js.sql</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.sql.Database">
+            function <span class="apidocSignatureSpan">sql.js.sql.</span>Database
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.sql_debug">module sql.js.sql_debug</a><ol>
 
         <li>
@@ -215,6 +240,19 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.sql.js.sql_memory_growth.Database">
             function <span class="apidocSignatureSpan">sql.js.sql_memory_growth.</span>Database
+            <span class="apidocSignatureSpan">(a)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sql.js.sql_optimized">module sql.js.sql_optimized</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sql.js.sql_optimized.Database">
+            function <span class="apidocSignatureSpan">sql.js.sql_optimized.</span>Database
             <span class="apidocSignatureSpan">(a)</span>
             </a>
 
@@ -292,6 +330,10 @@ this.filename,Z));this.db=y(Z,"i32");be(this.db);this.ra={}}</pre></li>
 
 
 
+
+
+
+
 </div>
 
 <div class="apidocSectionDiv">
@@ -343,22 +385,21 @@ sqlstr += "INSERT INTO hello VALUES (1, 'world');"
     <li>description and source-code<pre class="apidocCodePre">close = function (){var a,c,d;c=this.ra;for(a in c)d=c[a],d.free();this.handleError(le(this.db));qc("/"+this.filename);return this.db=null
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    console.log("FS.trackingDelegate['onOpenFile']('"+path+"', flags) threw an exception: "
-; + e.message);
-  }
-  return stream;
-},close:function (stream) {
-  if (stream.getdents) stream.getdents = null; // free readdir state
-  try {
-    if (stream.stream_ops.close) {
-      stream.stream_ops.<span class="apidocCodeKeywordSpan">close</span>(stream);
-    }
-  } catch (e) {
-    throw e;
-  } finally {
-    FS.closeStream(stream.fd);
-  }
-},llseek:function (stream, offset, whence) {
+
+Prepared statements allow you to have a template sql string,
+that you can execute multiple times with different parameters.
+
+You can't instantiate this class directly, you have to use a [Database](Database.html)
+object in order to create a statement.
+
+**Warning**: When you close a database (using db.<span class="apidocCodeKeywordSpan">close</span>()), all its statements are
+closed too and become unusable.
+
+@see Database.html#prepare-dynamic
+@see https://en.wikipedia.org/wiki/Prepared_statement
+ */
+
+Statement = (function() {
 ...</pre></li>
     </ul>
 
@@ -410,17 +451,17 @@ stmt.free();
     <li>description and source-code<pre class="apidocCodePre">each = function (a, c, d, e){"function"===typeof c&amp;&amp;(e=d,d=c,c=void 0);for(a=this.prepare(a,c);a.step();)d(a.getAsObject());a.free();if("function
 "===typeof e)return e()}</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-to the query
-@param callback [Function(Object)] A function that will be called on each row of result
-@param done [Function] A function that will be called when all rows have been retrieved
+	to the query
+	@param callback [Function(Object)] A function that will be called on each row of result
+	@param done [Function] A function that will be called when all rows have been retrieved
 
-@return [Database] The database object. Useful for method chaining
+	@return [Database] The database object. Usefull for method chaining
 
-@example Read values from a table
-    db.<span class="apidocCodeKeywordSpan">each</span>("SELECT name,age FROM users WHERE age &gt;= $majority",
-                    {$majority:18},
-                    function(row){console.log(row.name + " is a grown-up.")}
-                );
+	@example Read values from a table
+	    db.<span class="apidocCodeKeywordSpan">each</span>("SELECT name,age FROM users WHERE age &gt;= $majority",
+	    				{$majority:18},
+	    				function(row){console.log(row.name + " is a grown-up.")}
+	    			);
  */
 
 Database.prototype['each'] = function(sql, params, callback, done) {
@@ -600,6 +641,41 @@ var res = db.exec("SELECT * FROM hello");
 </div>
 
 <div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js.sql" id="apidoc.module.sql.js.sql">module sql.js.sql</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.sql.Database" id="apidoc.element.sql.js.sql.Database">
+        function <span class="apidocSignatureSpan">sql.js.sql.</span>Database
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function a(a){this.filename="dbfile_"+(4294967295*Math.random()&gt;&gt;&gt;0);null!=a&amp;&amp;Gc("/",this.filename,a,!0,!0);this.handleError(xe(
+this.filename,Z));this.db=y(Z,"i32");be(this.db);this.ra={}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var sql = require('sql.js');
+// or sql = window.SQL if you are in a browser
+
+// Create a database
+var db = new sql.<span class="apidocCodeKeywordSpan">Database</span>();
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = "CREATE TABLE hello (a int, b char);";
+sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
+sqlstr += "INSERT INTO hello VALUES (1, 'world');"
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.sql.js.sql_debug" id="apidoc.module.sql.js.sql_debug">module sql.js.sql_debug</a></h1>
 
 
@@ -655,6 +731,41 @@ sqlstr += "INSERT INTO hello VALUES (1, 'world');"
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function a(a){this.filename="dbfile_"+(4294967295*Math.random()&gt;&gt;&gt;0);null!=a&amp;&amp;Kc("/",this.filename,a,!0,!0);this.handleError(Be(
 this.filename,Z));this.db=Ha(Z,"i32");fe(this.db);this.ra={}}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+## Usage
+
+```javascript
+var sql = require('sql.js');
+// or sql = window.SQL if you are in a browser
+
+// Create a database
+var db = new sql.<span class="apidocCodeKeywordSpan">Database</span>();
+// NOTE: You can also use new sql.Database(data) where
+// data is an Uint8Array representing an SQLite database file
+
+// Execute some sql
+sqlstr = "CREATE TABLE hello (a int, b char);";
+sqlstr += "INSERT INTO hello VALUES (0, 'hello');"
+sqlstr += "INSERT INTO hello VALUES (1, 'world');"
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sql.js.sql_optimized" id="apidoc.module.sql.js.sql_optimized">module sql.js.sql_optimized</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sql.js.sql_optimized.Database" id="apidoc.element.sql.js.sql_optimized.Database">
+        function <span class="apidocSignatureSpan">sql.js.sql_optimized.</span>Database
+        <span class="apidocSignatureSpan">(a)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function vd(a){this.filename="dbfile_"+(4294967295*Math.random()&gt;&gt;&gt;0);a!=l&amp;&amp;z.Gb("/",this.filename,a,k,k);this.handleError(pd(this
+.filename,Z));this.db=Fa(Z,"i32");this.Yb={}}</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ## Usage
 
